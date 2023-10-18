@@ -11,7 +11,7 @@ export enum  PieceKind {
 
 
 export enum Color {
-    BLACK = 'BLACK',
+    GRAY = 'GRAY',
     WHITE = 'WHITE',
 }
 

@@ -1,6 +1,6 @@
 
 import { useMemo } from "react";
-import Square from "../Square/Square";
+import SquareContainer from "../Square/Square.container";
 import './Board.css'
 import Piece from "../Piece/Piece";
 
@@ -14,9 +14,9 @@ const Board = () => {
             let rr = rowIndex%2;
             for(let columnIndex=1;columnIndex <= 8;columnIndex++){
                 if(columnIndex%2 === rr){
-                    squareComponts.push(<Square color="white" rowIndex={rowIndex} columnIndex={columnIndex}></Square>);
+                    squareComponts.push(<SquareContainer color="white" rowIndex={rowIndex} columnIndex={columnIndex}></SquareContainer>);
                 }else {
-                    squareComponts.push(<Square color="gray" rowIndex={rowIndex} columnIndex={columnIndex}></Square>);
+                    squareComponts.push(<SquareContainer color="gray" rowIndex={rowIndex} columnIndex={columnIndex}></SquareContainer>);
                 }
                
             }

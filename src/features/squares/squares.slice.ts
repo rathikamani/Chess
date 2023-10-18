@@ -5,14 +5,16 @@ import { RootState } from "../../app/store";
 
 
 export interface ISquare{
-    id: string 
-    color: Color
+    file: string, 
+    rank: string,
+    color: Color,
     bwPosition : string,
-    wbPosition: string
+    wbPosition: string,
+    kind: string
 }
-
+export const generateSquareId = (square:ISquare) =>`${square.file}_${square.rank}`
 const squaresAdapter = createEntityAdapter<ISquare>({
-
+    selectId: generateSquareId
 })
 
 
