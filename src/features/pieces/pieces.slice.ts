@@ -1,4 +1,5 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../../app/store";
 
 export enum  PieceKind {
     KING = 'KING',
@@ -19,6 +20,7 @@ export interface IPiece{
     kind : PieceKind
     color: Color
     squareID: string,
+    id: string
 }
 
 const piecesAdapter = createEntityAdapter<IPiece>({
@@ -35,5 +37,9 @@ const piecesSlice = createSlice({
         addPiece: piecesAdapter.addOne
     }
 })
+
+export const { addPiece } = piecesSlice.actions;
+export const selectPieces = (rootState:RootState) => rootState.pieces;
+export const { selectAll:selectAllPieces } = piecesAdapter.getSelectors(selectPieces);
 
 export default piecesSlice;

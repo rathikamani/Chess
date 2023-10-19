@@ -1,13 +1,13 @@
 
 
-export interface IPiece {
-    kind: string
-    rowIndex: string
-    columnIndex: string
-}
+// export interface IPiece {
+//     kind: string
+//     rowIndex: string
+//     columnIndex: string
+// }
 
-const Piece = (props: IPiece) => {
-    const { kind,rowIndex,columnIndex } = props;
+const Piece = (props:any) => {
+    const { kind,color,squareID,id } = props;
     return <><img  style={{
         gridArea: `
     ${rowIndex}/${columnIndex}/${rowIndex + 1}/${columnIndex + 1}

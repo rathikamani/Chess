@@ -5,24 +5,33 @@ import './Board.css'
 import Piece from "../Piece/Piece";
 
 //imges
-import King from '../../../public/assets/bKing.png';
 import { useSelector } from "react-redux";
-import { selectAllSquares } from "../../features/squares/squares.slice";
-import Square from "../Square/Square";
+import { generateSquareId, selectAllSquares } from "../../features/squares/squares.slice";
+import PieceContainer from "../Piece/Piece.container";
+import { selectAllPieces } from "../../features/pieces/pieces.slice";
+
 
 const Board = () => {
-    const squares = useSelector(selectAllSquares)    
+    const squares = useSelector(selectAllSquares) 
+    const pieces = useSelector(selectAllPieces)   
     const squaresUI = useMemo(()=>{
-       return squares.map((square,index)=>{
-        return <SquareContainer key={index} {...square}></SquareContainer>
-       })
-        
+       return squares.map((square)=>{
+        return <SquareContainer key={generateSquareId(square)} {...square}></SquareContainer>
+       })    
     },[squares]);
+
+    const piecesUI = useMemo(()=>{
+        return pieces.map((piece)=>{
+            return <PieceContainer rowIndex={""} columnIndex={""} key={piece.id} {...piece}></PieceContainer>
+        })
+      
+    },[]);
 
     
     return <>
     <div className="Board">
-        {squaresUI}
+        <div>{squaresUI}</div>
+        <div>{piecesUI}</div>
     </div>
       </>
 };

@@ -9,8 +9,7 @@ export interface ISquare{
     rank: string,
     color: Color,
     bwPosition : string,
-    wbPosition: string,
-    kind: string
+    wbPosition: string
 }
 export const generateSquareId = (square:ISquare) =>`${square.file}_${square.rank}`
 const squaresAdapter = createEntityAdapter<ISquare>({
@@ -24,12 +23,13 @@ const squaresSlice = createSlice({
         ...squaresAdapter.getInitialState()
     },
     reducers: {
-        addSquare: squaresAdapter.addOne
+        addSquare: squaresAdapter.addOne,
+        addSquares: squaresAdapter.addMany
     }
 })
 
 
-export const { addSquare } = squaresSlice.actions;
+export const { addSquare,addSquares } = squaresSlice.actions;
 
 export const selectSquares = (rootState:RootState) => rootState.squares;
 export const { selectAll:selectAllSquares } = squaresAdapter.getSelectors(selectSquares);

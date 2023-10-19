@@ -2,15 +2,20 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Square } from './Square';
+
 import { Color } from '../../features/pieces/pieces.slice';
 import '../Board/Board.css'
+import Square from './Square';
 
 const meta: Meta<typeof Square> = {
   component: Square,
   argTypes: {
     color: {
       options: [Color.GRAY,Color.WHITE],
+      control: { type: 'radio' },
+    },
+    direction: {
+      options: ['BW','WB'],
       control: { type: 'radio' },
     },
   },
@@ -26,9 +31,9 @@ type Story = StoryObj<typeof Square>;
  */
 
 export const Primary: Story = {
-  render: () => {
-    const data = { file: 'b', rank: '1', color: Color.GRAY, bwPosition: '1/7/2/8', wbPosition: '8/2/9/3' }
-    return <div className='Board'><Square  {...data} direction='BW' id="b_1" /></div>
+  render: (props) => {
+    const data = { file: 'b', rank: '1', color: props.color, bwPosition: '1/7/2/8', wbPosition: '8/2/9/3' }
+    return <div className='Board'><Square  {...data} direction={props.direction}  id="b_1" kind="" /></div>
   },
   args: {
     color: Color.GRAY,
