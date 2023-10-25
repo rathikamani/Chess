@@ -1,4 +1,4 @@
-import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 import { Color } from "../pieces/pieces.slice";
 import { RootState } from "../../app/store";
 
@@ -31,7 +31,16 @@ const squaresSlice = createSlice({
 
 export const { addSquare,addSquares } = squaresSlice.actions;
 
+// This will provide entities raw format
 export const selectSquares = (rootState:RootState) => rootState.squares;
-export const { selectAll:selectAllSquares } = squaresAdapter.getSelectors(selectSquares);
+// selectAll will provide Items in array format
+// selectEntities will provide object format 
+export const { selectAll:selectAllSquares, selectEntities:selectSquareEntities } = squaresAdapter.getSelectors(selectSquares);
+// selectsquareBYID will provide single item if your provide squareID
+export const selectSquareByID = (squareID:string)=>{
+    return createSelector(selectSquareEntities,(squareEntities)=>{
+        return squareEntities[squareID] || { bwPosition:'',wbPosition:''};
+    })
+}
 
 export default squaresSlice;

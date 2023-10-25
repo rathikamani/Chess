@@ -22,16 +22,16 @@ const Board = () => {
 
     const piecesUI = useMemo(()=>{
         return pieces.map((piece)=>{
-            return <PieceContainer rowIndex={""} columnIndex={""} key={piece.id} {...piece}></PieceContainer>
+            return <PieceContainer key={piece.id} {...piece}></PieceContainer>
         })
       
-    },[]);
+    },[pieces]);
 
     
     return <>
     <div className="Board">
-        <div>{squaresUI}</div>
-        <div>{piecesUI}</div>
+        <div className="Squares">{squaresUI}</div>
+        <div className="Pieces">{piecesUI}</div>
     </div>
       </>
 };

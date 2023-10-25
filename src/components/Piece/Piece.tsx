@@ -7,11 +7,9 @@
 // }
 
 const Piece = (props:any) => {
-    const { kind,color,squareID,id } = props;
+    const { kind,position,color } = props;
     return <><img  style={{
-        gridArea: `
-    ${1}/${1}/${1 + 1}/${1 + 1}
-  `}} src={`http://127.0.0.1:5173/assets/${kind}.png`}></img></>
+        gridArea: position}} src={`http://127.0.0.1:5173/assets/${color}_${kind}.png`}></img></>
 };
 
 export default Piece;

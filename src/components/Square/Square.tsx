@@ -7,11 +7,12 @@ export interface ISquarePresentation extends ISquare{
 
  const Square = (props:ISquarePresentation)=>{
     const {color,direction,bwPosition,wbPosition,id} = props;
-    return  <div style={{backgroundColor:color, 
-        gridArea: 
-          direction === 'BW' ? bwPosition : wbPosition
-        }} 
-        className='Square'>
+    return  <div 
+          style={{backgroundColor:color, 
+              gridArea: 
+                direction === 'BW' ? bwPosition : wbPosition
+              }} 
+        >
           {id}</div>
 }
 
