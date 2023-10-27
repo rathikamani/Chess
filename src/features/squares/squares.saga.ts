@@ -11,9 +11,10 @@ function* createSquares(){
         console.log('colIndex',colIndex);
         let color;
         if(rowIndex % 2 == 1){
-           color = colIndex % 2 == 0 ? Color.WHITE : Color.GRAY;
+          color = colIndex % 2 == 0 ? Color.GRAY : Color.WHITE;
         }else {
-            color = colIndex % 2 == 0 ? Color.GRAY : Color.WHITE;
+            
+            color = colIndex % 2 == 0 ? Color.WHITE : Color.GRAY;
         }
         
         squares.push({ file: String.fromCharCode(96 + colIndex), rank: `${9-rowIndex}`, color: color, bwPosition: `${rowIndex}/${colIndex}/${1+rowIndex}/${colIndex + 1}`, wbPosition: `${9-rowIndex}/${9 - colIndex}/${10-rowIndex}/${10 - colIndex}` })
